@@ -1,0 +1,33 @@
+import pandas as pd
+import random
+from faker import Faker
+
+fd = int(input("How much data required:"))
+
+fake = Faker()
+
+values = {
+    "name": [None] * fd,
+    "DOB": [None] * fd,
+    "phone_no": [None] * fd,
+    "email": [None] * fd,
+    "address": [None] * fd,
+    "kids": [None] * fd,
+    "speeding_tickets": [None] * fd,
+    "house_sta": [None] * fd,
+    "income": [None] * fd,
+}
+
+for n in range(fd):
+    fd["name"][n] = fake.name()
+    fd["DOB"][n] = fake.year()
+    fd["Phone_no"][n] = fake.phone_number()
+    fd["email"][n] = fake.email()
+    fd["address"][n] = fake.address()
+    fd["kids"][n] = random.randint(0,3)
+    fd["speeding_tickets"][n] = fake.random_number()
+    fd["house_sta"][n] = random.choice(["Rent","Own"])
+    fd["income"][n] = random.randfloat(10000, 1000000)
+      
+
+out = pd.DataFrame(fd)
